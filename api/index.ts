@@ -1,8 +1,12 @@
+// 如果 Vercel 没有自动加载环境，直接补充 Deno 权限
+if (!Deno.env.get("GITHUB_TOKEN")) {
+  console.warn("Warning: GITHUB_TOKEN is not set in environment variables.");
+}
+
 import { Card } from "../src/card.ts";
 import { CONSTANTS, parseParams } from "../src/utils.ts";
 import { COLORS, Theme } from "../src/theme.ts";
 import { Error400 } from "../src/error_page.ts";
-import "https://deno.land";
 import { staticRenderRegeneration } from "../src/StaticRenderRegeneration/index.ts";
 import { GithubRepositoryService } from "../src/Repository/GithubRepository.ts";
 import { GithubApiService } from "../src/Services/GithubApiService.ts";
